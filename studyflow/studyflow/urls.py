@@ -28,5 +28,8 @@ urlpatterns = [
     path('api/auth/refresh/', TokenRefreshView.as_view()),
 
     path('api/auth/', include('users.urls')),
+
+    path('api/courses/', include('courses.urls')),
+
 ]
 
