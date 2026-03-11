@@ -33,5 +33,7 @@ urlpatterns = [
 
     path('api/tasks/', include('tasks.urls')),
 
+    path('api/holidays/', include('holidays.urls')),
+
 ]
 
