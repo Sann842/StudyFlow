@@ -1,5 +1,6 @@
 from rest_framework import serializers
 from .models import Task, SubTask
+from holidays.models import Holiday
 
 class TaskSerializer(serializers.ModelSerializer):
 
@@ -18,6 +19,10 @@ class TaskSerializer(serializers.ModelSerializer):
             'created_at'
         ]
         read_only_fields = ['id', 'created_at']
+
+    def get_is_holiday(self, obj):
+        """Check if the task’s due date falls on a holiday."""
+        return Holiday.objects.filter(date=obj.due_date.date()).exists()
 
 
 
